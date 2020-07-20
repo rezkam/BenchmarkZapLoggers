@@ -34,7 +34,7 @@ func main() {
 }
 
 func sugarLogger(sugar *zap.SugaredLogger, msg *Message) {
-	sugar.Infow("Sugar logger",
+	sugar.Info("Sugar logger",
 		"type", "sugar",
 		"status", "OK",
 		"error", 0,
@@ -43,8 +43,8 @@ func sugarLogger(sugar *zap.SugaredLogger, msg *Message) {
 }
 
 func structuredLogger(logger *zap.Logger, msg *Message) {
-	logger.Info("Structured logger",
-		zap.String("type", "structured"),
+	logger.Info("Sugar logger",
+		zap.String("type", "sugar"),
 		zap.String("status", "OK"),
 		zap.Int("error", 0),
 		zap.Object("message", msg))
