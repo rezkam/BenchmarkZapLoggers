@@ -3,8 +3,8 @@
 ## Benchmark Results
 on my MacBook Pro
 ```
-BenchmarkSugarLogger  	 1437794	       937 ns/op
-BenchmarkStructuredLogger   	 1403480	      1288 ns/op
+BenchmarkSugarLogger  	 1437794	       194 ns/op
+BenchmarkStructuredLogger   	 1403480	      307 ns/op
 ```
 on a Linux Machine
 ```
