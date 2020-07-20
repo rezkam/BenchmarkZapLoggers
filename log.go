@@ -21,6 +21,8 @@ func (m *Message) MarshalLogObject(enc zapcore.ObjectEncoder) error {
 func main() {
 	// we create a new logger and set the environment for it (production)
 	logger, err := zap.NewProduction()
+	defer logger.Sync()
+
 	if err != nil {
 		panic(err)
 	}
@@ -34,8 +36,8 @@ func main() {
 }
 
 func sugarLogger(sugar *zap.SugaredLogger, msg *Message) {
-	sugar.Info("Sugar logger",
-		"type", "sugar",
+	sugar.Infow("logger",
+		"type", "logger",
 		"status", "OK",
 		"error", 0,
 		"message", msg,
@@ -43,8 +45,8 @@ func sugarLogger(sugar *zap.SugaredLogger, msg *Message) {
 }
 
 func structuredLogger(logger *zap.Logger, msg *Message) {
-	logger.Info("Sugar logger",
-		zap.String("type", "sugar"),
+	logger.Info("logger",
+		zap.String("type", "logger"),
 		zap.String("status", "OK"),
 		zap.Int("error", 0),
 		zap.Object("message", msg))
