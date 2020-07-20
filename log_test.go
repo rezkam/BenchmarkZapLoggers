@@ -1,13 +1,15 @@
 package main
 
 import (
-	"go.uber.org/zap"
 	"testing"
+
+	"go.uber.org/zap"
 )
 
 func BenchmarkSugarLogger(b *testing.B) {
 	logger, _ := zap.NewProduction()
 	sugar := logger.Sugar()
+	defer sugar.Sync()
 	msg := &Message{"message_text", 1}
 
 	for i := 0; i < b.N; i++ {
@@ -16,6 +18,7 @@ func BenchmarkSugarLogger(b *testing.B) {
 }
 func BenchmarkStructuredLogger(b *testing.B) {
 	logger, _ := zap.NewProduction()
+	defer logger.Sync()
 	msg := &Message{"message_text", 1}
 
 	for i := 0; i < b.N; i++ {
