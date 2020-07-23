@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/rezakamalifard/TestLoggingWithZap/internal/ztest"
+	"github.com/rezakamalifard/BenchmarkZapLoggers/internal/ztest"
 	"testing"
 
 	"go.uber.org/zap"
