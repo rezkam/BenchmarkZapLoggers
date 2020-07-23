@@ -1,4 +1,4 @@
-module github.com/rezakamalifard/TestLoggingWithZap
+module github.com/rezakamalifard/BenchmarkZapLoggers
 
 go 1.14
 
