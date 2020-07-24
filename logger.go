@@ -1,4 +1,4 @@
-package main
+package logger
 
 import (
 	"go.uber.org/zap"
@@ -16,23 +16,6 @@ func (m *Message) MarshalLogObject(enc zapcore.ObjectEncoder) error {
 	enc.AddString("s", m.s)
 	enc.AddInt64("index", m.i)
 	return nil
-}
-
-func main() {
-	// we create a new logger and set the environment for it (production)
-	logger, err := zap.NewProduction()
-	defer logger.Sync()
-
-	if err != nil {
-		panic(err)
-	}
-	// initialize sugar logger
-	sugar := logger.Sugar()
-
-	// create new message
-	msg := &Message{"message_text", 1}
-	sugarLogger(sugar, msg)
-	structuredLogger(logger, msg)
 }
 
 func sugarLogger(sugar *zap.SugaredLogger, msg *Message) {

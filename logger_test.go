@@ -1,4 +1,4 @@
-package main
+package logger
 
 import (
 	"github.com/rezakamalifard/BenchmarkZapLoggers/internal/ztest"
